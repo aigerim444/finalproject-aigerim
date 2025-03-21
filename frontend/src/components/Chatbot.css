@@ -9,7 +9,7 @@
   height: 80vh;
 }
 
-.chatbot-header {
+.chatbot-header { /* "Study Assistant" */
   padding: 1.5rem;
   background: #f0def5;
   color: rgb(85, 106, 128);
@@ -17,10 +17,6 @@
   text-align: center;
 }
 
-.chatbot-header h2 {
-  margin: 0;
-  font-size: 1.8rem;
-}
 
 .chatbot-header p {
   margin: 0.5rem 0 0;
@@ -75,7 +71,6 @@
   border: 1px solid #ddd;
   border-radius: 8px;
   font-size: 1rem;
-  outline: none;
  
 }
 

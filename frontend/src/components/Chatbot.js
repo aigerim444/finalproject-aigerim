@@ -50,7 +50,7 @@ const Chatbot = () => {
   return (
     <div className="chatbot-container">
       <div className="chatbot-header">
-        <h2>Study Assistant</h2>
+        <h2>Educational Assistant</h2>
    
       </div>
       
