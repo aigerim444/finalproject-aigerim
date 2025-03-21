@@ -7,6 +7,7 @@ const Chatbot = () => {
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef(null);
 
+  // auto scrolling function
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
@@ -50,7 +51,7 @@ const Chatbot = () => {
     <div className="chatbot-container">
       <div className="chatbot-header">
         <h2>Study Assistant</h2>
-        <p>Ask me anything about your studies!</p>
+   
       </div>
       
       <div className="chatbot-messages">
@@ -81,7 +82,7 @@ const Chatbot = () => {
           type="text"
           value={inputMessage}
           onChange={(e) => setInputMessage(e.target.value)}
-          placeholder="Ask a question about your studies..."
+          placeholder="Type a question..."
           className="chatbot-input"
           disabled={isLoading}
         />

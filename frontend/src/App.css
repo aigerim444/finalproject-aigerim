@@ -1,6 +1,7 @@
 .App {
   min-height: 100vh;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  background: #f5f7fa;
+ /* background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);*/
 }
 
 .App-logo {
@@ -15,11 +16,10 @@
 }
 
 .App-header {
-  background: #4a90e2;
-  color: white;
+  background: #f5f7fa;
+  color:  rgb(85, 106, 128);
   padding: 2rem;
   text-align: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .App-header h1 {
@@ -36,7 +36,7 @@
 .App-main {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0 2rem 2rem 2rem;
 }
 
 .features-section {
@@ -61,7 +61,7 @@
 
 .feature-card h3 {
   margin: 0 0 0.5rem;
-  color: #4a90e2;
+  color: #b3cae5;
   font-size: 1.3rem;
 }
 
@@ -90,7 +90,7 @@
   }
   
   .App-main {
-    padding: 1rem;
+    padding: 0 1rem 1rem 1rem;
   }
   
   .features-section {
