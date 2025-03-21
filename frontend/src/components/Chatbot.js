@@ -14,15 +14,15 @@ const Chatbot = () => {
 
   useEffect(() => {
     scrollToBottom();
-  }, [messages]);
+  }, [messages]); // whenever [messages] changes, effect runs (screen scrolls)
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => { //when form is submitted
     e.preventDefault();
-    if (!inputMessage.trim()) return;
+    if (!inputMessage.trim()) return; //can't have empty input
 
-    const userMessage = inputMessage.trim();
-    setInputMessage('');
-    setMessages(prev => [...prev, { text: userMessage, sender: 'user' }]);
+    const userMessage = inputMessage.trim(); //get rid of whitespace at end
+    setInputMessage(''); //clean input field
+    setMessages(prev => [...prev, { text: userMessage, sender: 'user' }]); //user message added to chat
     setIsLoading(true);
 
     try {
@@ -35,6 +35,7 @@ const Chatbot = () => {
       });
 
       const data = await response.json();
+      // adding the bot's response to the chat
       setMessages(prev => [...prev, { text: data.response, sender: 'bot' }]);
     } catch (error) {
       console.error('Error:', error);
@@ -53,27 +54,20 @@ const Chatbot = () => {
         <h2>Educational Assistant</h2>
    
       </div>
-      
+    {/* div container for all msgs. use two diff classes depending on user msg or bot msg*/ }
       <div className="chatbot-messages">
         {messages.map((message, index) => (
           <div 
             key={index} 
             className={`message ${message.sender === 'user' ? 'user-message' : 'bot-message'}`}
           >
+            {/* one class for actual content formatting*/ }
             <div className="message-content">
               {message.text}
             </div>
           </div>
         ))}
-        {isLoading && (
-          <div className="message bot-message">
-            <div className="message-content loading">
-              <span className="dot"></span>
-              <span className="dot"></span>
-              <span className="dot"></span>
-            </div>
-          </div>
-        )}
+        
         <div ref={messagesEndRef} />
       </div>
 
@@ -84,12 +78,12 @@ const Chatbot = () => {
           onChange={(e) => setInputMessage(e.target.value)}
           placeholder="Type a question..."
           className="chatbot-input"
-          disabled={isLoading}
+          disabled={isLoading} //disable input while waiting for respond
         />
         <button 
           type="submit" 
           className="chatbot-send-button"
-          disabled={isLoading || !inputMessage.trim()}
+          disabled={isLoading || !inputMessage.trim()} //button disabled when processing a request or if input is empty
         >
           Send
         </button>
