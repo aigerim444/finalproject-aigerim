@@ -1,8 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 const ChatBox = () => {
     const [messages, setMessages] = useState([]); // Stores chat messages
     const [input, setInput] = useState(""); // Tracks user input
+    const chatWindowRef = useRef(null);
+
+    // new //Scroll to the bottom of the chat window when new messages are added
+    useEffect(() => {
+        if (chatWindowRef.current) {
+            chatWindowRef.current.scrollTop = chatWindowRef.current.scrollHeight;
+        }
+    }, [messages]);
 
     const sendMessage = async () => {
         if (!input) return; // Don't send empty messages
