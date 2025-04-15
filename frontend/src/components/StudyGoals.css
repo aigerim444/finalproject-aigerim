@@ -1,0 +1,156 @@
+.goals-container {
+    max-width: 100%;
+    margin: 0;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    height: 70vh;
+}
+
+.goals-header {
+    padding: 1.5rem;
+    background: #f0def5;
+    color: rgb(85, 106, 128);
+    border-radius: 12px 12px 0 0;
+    text-align: center;
+}
+
+.goals-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.goal-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f0f2f5;
+    padding: 0.8rem 1rem;
+    border-radius: 12px;
+    margin: 0.5rem 0;
+    transition: background-color 0.2s;
+}
+
+.goal-item.completed {
+    background: #e8f5e9;
+}
+
+.goal-content {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    flex: 1;
+}
+
+.goal-checkbox {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.goal-text {
+    font-size: 1rem;
+    color: #1a1a1a;
+    line-height: 1.4;
+}
+
+.completed .goal-text {
+    text-decoration: line-through;
+    color: #666;
+}
+
+.delete-button {
+    background: none;
+    border: none;
+    color: #666;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.delete-button:hover {
+    background: rgba(0, 0, 0, 0.1);
+    color: #d32f2f;
+}
+
+.goals-input-form {
+    display: flex;
+    padding: 1rem;
+    gap: 0.5rem;
+}
+
+.goals-input {
+    flex: 1;
+    padding: 0.8rem;
+    border: 2px solid #e9bff4;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.goals-input:focus {
+    border-color: #d1abe4;
+    outline: none;
+}
+
+.goals-add-button {
+    padding: 0.8rem 1.5rem;
+    background: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.2s;
+}
+
+.goals-add-button:hover:not(:disabled) {
+    background: #c8acef;
+}
+
+.goals-add-button:disabled {
+    background: #b7b6b6;
+    cursor: not-allowed;
+}
+
+.progress-section {
+    margin-bottom: 2rem;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    background: #f0f2f5;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+
+.progress-fill {
+    height: 100%;
+    background: #4a90e2;
+    transition: width 0.3s ease;
+}
+
+.session-summary {
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.session-summary h3 {
+    margin-bottom: 1rem;
+    color: #4a90e2;
+}
+
+.session-summary p {
+    margin: 0.5rem 0;
+    color: #666;
+}

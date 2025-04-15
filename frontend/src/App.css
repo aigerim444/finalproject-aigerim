@@ -1,7 +1,6 @@
 .App {
   min-height: 100vh;
   background: #f5f7fa;
- /* background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);*/
 }
 
 .App-logo {
@@ -17,9 +16,10 @@
 
 .App-header {
   background: #f5f7fa;
-  color:  rgb(85, 106, 128);
-  padding: 2rem;
+  color: rgb(85, 106, 128);
+  padding: 1.5rem 2rem;
   text-align: left;
+  margin-bottom: 1rem;
 }
 
 .App-header h1 {
@@ -34,9 +34,16 @@
 }
 
 .App-main {
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0 auto;
-  padding: 0 2rem 2rem 2rem;
+  padding: 0 2rem 2rem;
+}
+
+.app-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
+  align-items: start;
 }
 
 .features-section {
@@ -75,16 +82,19 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.chatbot-container,
+.goals-container,
+.quiz-generator {
+  max-width: 100%;
+  margin: 0;
+  height: 70vh;
 }
 
 @media (max-width: 768px) {
+  .app-content {
+    grid-template-columns: 1fr;
+  }
+  
   .App-header h1 {
     font-size: 2rem;
   }
@@ -95,5 +105,40 @@
   
   .features-section {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .app-content {
+    grid-template-columns: 1fr;
+  }
+  
+  .App-main {
+    padding: 0 1rem 1rem;
+  }
+  
+  .chatbot-container,
+  .goals-container,
+  .quiz-generator {
+    height: 60vh;
+  }
+}
+
+@media (min-width: 1800px) {
+  .App-main {
+    max-width: 1800px;
+  }
+  
+  .app-content {
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }
