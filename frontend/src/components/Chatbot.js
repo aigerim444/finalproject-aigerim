@@ -35,12 +35,21 @@ const Chatbot = () => {
       });
 
       const data = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to get response');
+      }
+
+      if (!data.response) {
+        throw new Error('Empty response received');
+      }
+
       // adding the bot's response to the chat
       setMessages(prev => [...prev, { text: data.response, sender: 'bot' }]);
     } catch (error) {
       console.error('Error:', error);
       setMessages(prev => [...prev, { 
-        text: 'Sorry, I encountered an error. Please try again.', 
+        text: `Sorry, I encountered an error: ${error.message}. Please try again.`, 
         sender: 'bot' 
       }]);
     } finally {
@@ -55,6 +64,16 @@ const Chatbot = () => {
    
       </div>
     {/* div container for all msgs. use two diff classes depending on user msg or bot msg*/ }
+    {isLoading && (
+          <div className="message bot-message">
+            <div className="message-content loading">
+              <span className="dot"></span>
+              <span className="dot"></span>
+              <span className="dot"></span>
+            </div>
+          </div>
+        )}
+
       <div className="chatbot-messages">
         {messages.map((message, index) => (
           <div 

@@ -24,30 +24,35 @@ def home():
 @app.route("/api/get_response", methods=["POST"])
 def get_response():
     try: 
-
         user_message = request.json.get("message")
+        if not user_message:
+            return jsonify({"error": "Empty message received"}), 400
+            
         print("User message:", user_message) #logging
-        # Example: Basic response logic (you can replace this!)
+        
+        # Create a system message to guide the AI's responses
+        messages = [
+            {"role": "system", "content": "You are an educational assistant helping students with their studies. Provide clear, helpful, and concise responses."},
+            {"role": "user", "content": user_message}
+        ]
+        
         response = client.chat.completions.create(
-            model="o1-mini",
-            messages=[{
-                "role": "user",
-                "content": user_message
-            }], 
-            max_completion_tokens = 1000
+            model="gpt-3.5-turbo",  # Using a more capable model
+            messages=messages,
+            max_tokens=1000,
+            temperature=0.7
         )
-        # print("OpenAI Response:", response)
-        # print(completion.choices[0].message.content)
-        bot_response = response.choices[0].message.content 
-        print("this is the response: ", bot_response)
+        
+        bot_response = response.choices[0].message.content
+        if not bot_response:
+            return jsonify({"error": "Empty response from AI"}), 500
+            
+        print("Bot response:", bot_response)
         return jsonify({"response": bot_response})
 
     except Exception as e:
         print("Error:", e)
         return jsonify({"error": str(e)}), 500
-
-    # Return the bot's response
-  #  return jsonify({"response": bot_response})
 
 # Quiz generation endpoint
 @app.route("/api/generate-quiz", methods=["POST"])
